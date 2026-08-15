@@ -1,0 +1,46 @@
+{
+  "coord": {
+    "lon": -46.6361,
+    "lat": -23.5475
+  },
+  "weather": [
+    {
+      "id": 802,
+      "main": "Clouds",
+      "description": "nuvens dispersas",
+      "icon": "03d"
+    }
+  ],
+  "base": "stations",
+  "main": {
+    "temp": 22.07,
+    "feels_like": 22.24,
+    "temp_min": 21.19,
+    "temp_max": 22.52,
+    "pressure": 1019,
+    "humidity": 73,
+    "sea_level": 1019,
+    "grnd_level": 929
+  },
+  "visibility": 10000,
+  "wind": {
+    "speed": 4.12,
+    "deg": 80
+  },
+  "clouds": {
+    "all": 31
+  },
+  "dt": 1786823679,
+  "sys": {
+    "type": 1,
+    "id": 8394,
+    "country": "BR",
+    "sunrise": 1786786346,
+    "sunset": 1786826994
+  },
+  "timezone": -10800,
+  "id": 3448439,
+  "name": "São Paulo",
+  "cod": 200,
+  "data_coleta": "2026-08-15T20:08:27.756831+00:00"
+}
