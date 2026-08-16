@@ -49,12 +49,10 @@ def salvar_raw(dados: dict, cidade: str) -> Path:
     RAW_DIR = Path("raw")
     RAW_DIR.mkdir(parents=True, exist_ok=True)
     data_coleta = datetime.now(timezone.utc)
-    carimbo = data_coleta.strftime("%Y%m%dT%H%M%SZ")
+    carimbo = data_coleta.strftime("%Y-%m-%d_%H%M")
 
-    # Inclui a data da coleta dentro do JSON
-    dados["data_coleta"] = data_coleta.strftime("%Y-%m-%d %H:%M:%S")
+    caminho = RAW_DIR / f"{carimbo}_{cidade.replace(',', '_')}.json"
 
-    caminho = RAW_DIR / f"clima_{cidade.replace(',', '_')}_{carimbo}.json"
     with open(caminho, "w", encoding="utf-8") as arquivo:
         json.dump(dados, arquivo, ensure_ascii=False, indent=2)
 

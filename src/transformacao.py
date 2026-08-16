@@ -3,7 +3,6 @@ from pathlib import Path
 import pandas as pd
 
 RAW_DIR = Path("raw")
-TRATADA_DIR = Path("docs/tratada")
 
 # Configuração do logging
 logging.basicConfig(level=logging.INFO,
@@ -12,13 +11,13 @@ logger = logging.getLogger(__name__)
 
 # normalização: achatar e selecionar
 def listar_raws() -> list[Path]:
-    return sorted(RAW_DIR.glob("clima_*.json"))
+    return sorted(RAW_DIR.glob("*.json"))
 def carregar_raw(caminho: Path) -> dict:
     with open(caminho, encoding="utf-8") as arq:
         return json.load(arq)
 
 # renomar, tipar, rastrear
-def transformar(dados: dict, origem: str) -> pd.DataFrame:
+def transformar(dados: dict, origem: str, data_coleta: pd.Timestamp) -> pd.DataFrame:
     """Transforma os dados brutos da API em um DataFrame limpo."""
 
     df = pd.DataFrame([{
@@ -27,11 +26,11 @@ def transformar(dados: dict, origem: str) -> pd.DataFrame:
         "temperatura": dados["main"]["temp"],
         "umidade": dados["main"]["humidity"],
         "velocidade_vento": dados["wind"]["speed"],
-        "data_coleta": dados["data_coleta"]
+        "data_coleta": data_coleta
     }])
 
-    # Converte data_coleta de texto para datetime
-    df["data_coleta"] = pd.to_datetime(df["data_coleta"])
+    # Converte data_coleta para datetime
+    df["data_coleta"] = pd.to_datetime(df["data_coleta"], utc=True)
 
     # Rastreabilidade
     df["arquivo_origem"] = origem
@@ -54,17 +53,29 @@ def validar (df: pd.DataFrame) -> None:
 
     logger.info("Validação ok: %d linhas íntegras", len(df))
 
-if __name__ == "__main__":
+def executar_transformacao() -> pd.DataFrame:
+    """Executa a transformação de todos os raws e retorna o DataFrame final."""
     arquivos = listar_raws()
     if not arquivos:
         raise SystemExit("Nenhum raw: rode src/extracao.py antes")
     logger.info("%d arquivos raw encontrados", len(arquivos))
+
     tabelas = []
     for caminho in arquivos:
         dados = carregar_raw(caminho)
-        tabelas.append(transformar(dados, origem=caminho.name))
+
+        # Recupera o timestamp do nome do arquivo
+        timestamp_texto = caminho.name[:15]
+        data_coleta = pd.to_datetime(timestamp_texto, format="%Y-%m-%d_%H%M", utc=True)
+        df = transformar(dados, origem=caminho.name, data_coleta=data_coleta)
+        tabelas.append(df)
+
     df = pd.concat(tabelas, ignore_index=True)
     validar(df)
-    TRATADA_DIR.mkdir(parents=True, exist_ok=True)
-    df.to_csv(TRATADA_DIR / "clima.csv", index=False)
-    logger.info("tratada gravada (%d linhas)", len(df))
+
+    return df
+
+if __name__ == "__main__":
+    df = executar_transformacao()
+
+    logger.info("Transformação concluída: %d linhas", len(df))
