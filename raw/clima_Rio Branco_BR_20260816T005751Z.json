@@ -5,32 +5,32 @@
   },
   "weather": [
     {
-      "id": 803,
+      "id": 804,
       "main": "Clouds",
       "description": "nublado",
-      "icon": "04d"
+      "icon": "04n"
     }
   ],
   "base": "stations",
   "main": {
-    "temp": 35.34,
-    "feels_like": 37.24,
-    "temp_min": 35.34,
-    "temp_max": 35.34,
+    "temp": 26.34,
+    "feels_like": 26.34,
+    "temp_min": 26.34,
+    "temp_max": 26.34,
     "pressure": 1009,
-    "humidity": 38,
+    "humidity": 83,
     "sea_level": 1009,
-    "grnd_level": 988
+    "grnd_level": 990
   },
   "visibility": 10000,
   "wind": {
-    "speed": 2.06,
-    "deg": 340
+    "speed": 1.03,
+    "deg": 290
   },
   "clouds": {
-    "all": 69
+    "all": 100
   },
-  "dt": 1786824361,
+  "dt": 1786841671,
   "sys": {
     "type": 1,
     "id": 8425,
@@ -42,5 +42,5 @@
   "id": 3662574,
   "name": "Rio Branco",
   "cod": 200,
-  "data_coleta": "2026-08-15T20:08:28.087131+00:00"
+  "data_coleta": "2026-08-16 00:57:51"
 }

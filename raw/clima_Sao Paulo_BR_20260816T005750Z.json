@@ -5,32 +5,32 @@
   },
   "weather": [
     {
-      "id": 802,
+      "id": 804,
       "main": "Clouds",
-      "description": "nuvens dispersas",
-      "icon": "03d"
+      "description": "nublado",
+      "icon": "04n"
     }
   ],
   "base": "stations",
   "main": {
-    "temp": 22.07,
-    "feels_like": 22.24,
-    "temp_min": 21.19,
-    "temp_max": 22.52,
-    "pressure": 1019,
-    "humidity": 73,
-    "sea_level": 1019,
-    "grnd_level": 929
+    "temp": 17.89,
+    "feels_like": 18.06,
+    "temp_min": 17.2,
+    "temp_max": 18.97,
+    "pressure": 1022,
+    "humidity": 89,
+    "sea_level": 1022,
+    "grnd_level": 931
   },
   "visibility": 10000,
   "wind": {
-    "speed": 4.12,
-    "deg": 80
+    "speed": 3.6,
+    "deg": 120
   },
   "clouds": {
-    "all": 31
+    "all": 100
   },
-  "dt": 1786823679,
+  "dt": 1786841554,
   "sys": {
     "type": 1,
     "id": 8394,
@@ -42,5 +42,5 @@
   "id": 3448439,
   "name": "São Paulo",
   "cod": 200,
-  "data_coleta": "2026-08-15T20:08:27.756831+00:00"
+  "data_coleta": "2026-08-16 00:57:50"
 }

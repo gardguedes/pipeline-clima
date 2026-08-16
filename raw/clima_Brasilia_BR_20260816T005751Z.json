@@ -5,32 +5,35 @@
   },
   "weather": [
     {
-      "id": 800,
-      "main": "Clear",
-      "description": "céu limpo",
-      "icon": "01d"
+      "id": 500,
+      "main": "Rain",
+      "description": "chuva leve",
+      "icon": "10n"
     }
   ],
   "base": "stations",
   "main": {
-    "temp": 29.51,
-    "feels_like": 27.88,
-    "temp_min": 29.51,
-    "temp_max": 29.51,
-    "pressure": 1013,
-    "humidity": 21,
-    "sea_level": 1013,
-    "grnd_level": 889
+    "temp": 23.51,
+    "feels_like": 22.78,
+    "temp_min": 23.51,
+    "temp_max": 23.51,
+    "pressure": 1019,
+    "humidity": 33,
+    "sea_level": 1019,
+    "grnd_level": 892
   },
   "visibility": 10000,
   "wind": {
-    "speed": 3.09,
-    "deg": 50
+    "speed": 1.54,
+    "deg": 100
+  },
+  "rain": {
+    "1h": 0.21
   },
   "clouds": {
     "all": 0
   },
-  "dt": 1786824145,
+  "dt": 1786841589,
   "sys": {
     "type": 1,
     "id": 8336,
@@ -42,5 +45,5 @@
   "id": 3469058,
   "name": "Brasília",
   "cod": 200,
-  "data_coleta": "2026-08-15T20:08:28.421381+00:00"
+  "data_coleta": "2026-08-16 00:57:51"
 }

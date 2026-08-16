@@ -1,0 +1,6 @@
+cidade,condicao,temperatura,umidade,velocidade_vento,data_coleta,arquivo_origem
+Brasília,chuva leve,23.51,33,1.54,2026-08-16 00:57:51,clima_Brasilia_BR_20260816T005751Z.json
+Porto Alegre,nublado,18.6,90,6.69,2026-08-16 00:57:51,clima_Porto Alegre_BR_20260816T005751Z.json
+Recife,nublado,26.02,73,5.66,2026-08-16 00:57:50,clima_Recife_BR_20260816T005750Z.json
+Rio Branco,nublado,26.34,83,1.03,2026-08-16 00:57:51,clima_Rio Branco_BR_20260816T005751Z.json
+São Paulo,nublado,17.89,89,3.6,2026-08-16 00:57:50,clima_Sao Paulo_BR_20260816T005750Z.json
