@@ -91,7 +91,7 @@ pipeline-clima/
     └── evidencias/
         ├── postgresql.png
         └── mongodb.png
-
+```
 > **Observação:** o arquivo `config.py` contém credenciais locais e está incluído no `.gitignore`. Ele não deve ser enviado ao GitHub.
 
 ## 5. Como executar o projeto
