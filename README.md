@@ -1,4 +1,3 @@
-````markdown
 # Pipeline de Dados Climáticos
 
 Pipeline de dados desenvolvido em Python para coletar informações climáticas atuais de cidades brasileiras por meio da API pública da **OpenWeatherMap**, armazenar os dados brutos, realizar transformação e validação com Pandas e disponibilizar os dados tratados em dois destinos: PostgreSQL e MongoDB Atlas.
@@ -92,7 +91,6 @@ pipeline-clima/
     └── evidencias/
         ├── postgresql.png
         └── mongodb.png
-````
 
 > **Observação:** o arquivo `config.py` contém credenciais locais e está incluído no `.gitignore`. Ele não deve ser enviado ao GitHub.
 
