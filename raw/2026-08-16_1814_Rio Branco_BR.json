@@ -1,0 +1,45 @@
+{
+  "coord": {
+    "lon": -67.81,
+    "lat": -9.9747
+  },
+  "weather": [
+    {
+      "id": 800,
+      "main": "Clear",
+      "description": "céu limpo",
+      "icon": "01d"
+    }
+  ],
+  "base": "stations",
+  "main": {
+    "temp": 33.34,
+    "feels_like": 36.68,
+    "temp_min": 33.34,
+    "temp_max": 33.34,
+    "pressure": 1010,
+    "humidity": 49,
+    "sea_level": 1010,
+    "grnd_level": 990
+  },
+  "visibility": 10000,
+  "wind": {
+    "speed": 1.54,
+    "deg": 40
+  },
+  "clouds": {
+    "all": 6
+  },
+  "dt": 1786903978,
+  "sys": {
+    "type": 1,
+    "id": 8425,
+    "country": "BR",
+    "sunrise": 1786876921,
+    "sunset": 1786919358
+  },
+  "timezone": -18000,
+  "id": 3662574,
+  "name": "Rio Branco",
+  "cod": 200
+}

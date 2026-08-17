@@ -10,9 +10,6 @@ from config import OPENWEATHER_API_KEY
 # cidades que serão consultadas
 CIDADES = ["Recife,BR", "Sao Paulo,BR", "Rio Branco,BR", "Brasilia,BR", "Porto Alegre,BR"]
 
-# Configuração do logging
-logging.basicConfig(level=logging.INFO,
-    format="%(asctime)s | %(levelname)s | %(message)s")
 logger = logging.getLogger(__name__)
 
 def consultar_clima(cidade: str) -> dict | None:
@@ -72,4 +69,8 @@ def main():
              logger.warning("Não foi possível obter os dados para %s", cidade)
 
 if __name__ == "__main__":
+    logging.basicConfig(
+        level=logging.INFO,
+        format="%(asctime)s | %(levelname)s | %(message)s"
+    )
     main()

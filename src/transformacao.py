@@ -4,15 +4,15 @@ import pandas as pd
 
 RAW_DIR = Path("raw")
 
-# Configuração do logging
-logging.basicConfig(level=logging.INFO,
-    format="%(asctime)s | %(levelname)s | %(message)s")
 logger = logging.getLogger(__name__)
 
 # normalização: achatar e selecionar
 def listar_raws() -> list[Path]:
+    """Lista todos os arquivos JSON presentes no diretório raw."""
     return sorted(RAW_DIR.glob("*.json"))
+
 def carregar_raw(caminho: Path) -> dict:
+    """Carrega o conteúdo de um arquivo JSON bruto."""
     with open(caminho, encoding="utf-8") as arq:
         return json.load(arq)
 
@@ -63,19 +63,23 @@ def executar_transformacao() -> pd.DataFrame:
     tabelas = []
     for caminho in arquivos:
         dados = carregar_raw(caminho)
-
-        # Recupera o timestamp do nome do arquivo
         timestamp_texto = caminho.name[:15]
         data_coleta = pd.to_datetime(timestamp_texto, format="%Y-%m-%d_%H%M", utc=True)
         df = transformar(dados, origem=caminho.name, data_coleta=data_coleta)
         tabelas.append(df)
 
     df = pd.concat(tabelas, ignore_index=True)
-    validar(df)
 
+    # Deduplicação centralizada na etapa de transformação
+    df = df.drop_duplicates(subset=["cidade", "data_coleta"])
+
+    validar(df)
     return df
 
 if __name__ == "__main__":
+    logging.basicConfig(
+        level=logging.INFO,
+        format="%(asctime)s | %(levelname)s | %(message)s"
+    )
     df = executar_transformacao()
-
     logger.info("Transformação concluída: %d linhas", len(df))

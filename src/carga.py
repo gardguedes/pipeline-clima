@@ -1,26 +1,28 @@
-import sys
 import logging
+import sys
 from pathlib import Path
-sys.path.append(str(Path(__file__).resolve().parent.parent))
 import pandas as pd
-
 from sqlalchemy import create_engine
-from config import POSTGRES_URL
-from transformacao import executar_transformacao
 
-# Configuração do logging
-logging.basicConfig(level=logging.INFO,
-    format="%(asctime)s | %(levelname)s | %(message)s")
+sys.path.append(str(Path(__file__).resolve().parent.parent))
+
+from config import POSTGRES_URL
+
 logger = logging.getLogger(__name__)
 
-# Executa a transformação
-df = executar_transformacao()
+def carregar_postgres(df: pd.DataFrame, tabela: str = "clima") -> None:
+    """Carrega o DataFrame consolidado no banco relacional PostgreSQL."""
+    engine = create_engine(POSTGRES_URL)
+    
+    df.to_sql(tabela, engine, if_exists="replace", index=False)
+    logger.info("Carga PostgreSQL concluída: %d registros gravados na tabela '%s'.", len(df), tabela)
 
-# Conferência dos tipos antes da carga
-logger.info("Tipos antes da carga:\n%s", df.dtypes)
-
-# Conexão com PostgreSQL
-engine = create_engine(POSTGRES_URL)
-df.to_sql("clima", engine, if_exists="replace", index=False)
-conferencia = pd.read_sql("SELECT cidade, condicao, temperatura, data_coleta FROM clima LIMIT 5", engine)
-logger.info("conferencia:\n%s", conferencia)
+if __name__ == "__main__":
+    logging.basicConfig(
+        level=logging.INFO,
+        format="%(asctime)s | %(levelname)s | %(message)s"
+    )
+    from transformacao import executar_transformacao
+    
+    df_tratado = executar_transformacao()
+    carregar_postgres(df_tratado)
